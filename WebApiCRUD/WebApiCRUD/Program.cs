@@ -22,5 +22,5 @@ namespace WebApiCRUD
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-    }
+    } 
 }
