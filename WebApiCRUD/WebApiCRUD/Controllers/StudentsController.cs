@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WebApiCRUD.Contexts;
 using WebApiCRUD.Models;
 
 namespace WebApiCRUD.Controllers
 {
-    [Route("api/[controller]")] 
+    [Route("api/[controller]")]
     [ApiController]
     public class StudentsController : ControllerBase
     {
@@ -20,6 +18,7 @@ namespace WebApiCRUD.Controllers
         }
 
         [HttpGet]
+      
         public IEnumerable<Student> Get()
         {
             var student = new Student();
@@ -33,11 +32,12 @@ namespace WebApiCRUD.Controllers
             var student = _context.Students.FirstOrDefault(x => x.Id == id);
             return student;
         }
-        [HttpPost] 
-        public void Post(Student student)
+        [HttpPost]
+        public IActionResult Post(Student student)
         {
-            _context.Students.Add(student); 
-            _context.SaveChanges(); 
+            _context.Students.Add(student);
+            _context.SaveChanges();
+            return Ok(student);
         }
         [HttpPut("{id}")]
         public void Put(int id, Student student)
