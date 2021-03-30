@@ -1,7 +1,9 @@
 ﻿@{
     ViewData["Title"] = "GetAll";
 }
-
+<button onclick="location.href='/students/add'">Add</button>
+<button onclick="location.href='/students/edit'">Edit</button>
+<button onclick="location.href='/students/delete'">Delete</button>
 <h1>GetAll</h1>
 <table class="table table-bordered table-striped" id="tblAllStudents">
     <thead>
@@ -27,7 +29,7 @@
             success: function (data) {
                 var loadStudents = "";
                 $.each(data, function (index, value) {
-                    loadStudents += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.email + '</td><td>' + value.phoneNo + '</td><td><a class="btn btn-success">Add</a></td><td><a class="btn btn-success">Edit</a></td><td><a class="btn btn-success">Delete</a></td></tr>';
+                    loadStudents += `<tr><td> ${value.id}</td><td>${value.name} </td><td> ${value.email} </td><td> ${value.phoneNo}  </td><td><button  type="submit" class="btn btn-success" onclick="location.href='/students/add'">Add</button></td> <td><button type="submit" class="btn btn-success">Edit</button></td><td><button type="submit" class="btn btn-success">Delete</button></td></tr>`;
                 });
                 $('#tblAllStudents').append(loadStudents);
             },
@@ -35,5 +37,12 @@
                 alert("error");
             },
         });
-    });
+    });       
 </script>
+
+@*<script type="text/javascript">
+        document.getElementById("btnAdd").onclick = function () {
+            location.href = "https://stackoverflow.com/questions/16562577/how-can-i-make-a-button-redirect-my-page-to-another-page";
+    };
+</script>*@
+

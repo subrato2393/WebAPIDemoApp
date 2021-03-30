@@ -16,9 +16,8 @@ namespace WebApiCRUD.Controllers
         {
             _context = context;
         }
-
+       
         [HttpGet]
-      
         public IEnumerable<Student> Get()
         {
             var student = new Student();

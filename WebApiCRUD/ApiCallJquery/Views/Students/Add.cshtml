@@ -54,19 +54,18 @@
             var studentModel = {
                 Name: $('#txtName').val(),
                 Email: $('#txtEmail').val(),
-                Phone: $('#txtPhone').val(),
+                PhoneNo: $('#txtPhone').val()
             }
             $.ajax({
                 type: 'POST',
-                url: 'https://localhost:44325/api/students',
+                url: 'https://localhost:44325/api/students',    
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(studentModel),
                 success: function (studentModel) {
-                    //alert(studentModel)
-                    console.log(studentModel);
+                    location.href = '/students/getall';
                 },
                 error: function (error) {
-                   //  alert("error")
+                   alert("error")
                 },
             })
             
